@@ -1,26 +1,28 @@
 {
-  "name": "daylight",
+  "name": "@kev_nz/daylight",
   "version": "0.2.3",
   "description": "lightweight javascript date formatting",
   "main": "daylight.js",
   "dependencies": {},
   "devDependencies": {
-    "tape": "~3.0.2"
+    "tape": "~4.11.0"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "postversion": "npm publish --access=public",
+    "postpublish": "git push origin --all --follow-tags"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/malantonio/daylight"
+    "url": "https://github.com/kevnz/daylight"
   },
   "keywords": [
     "date"
   ],
-  "author": "Adam Malantonio",
+  "author": "Kevin Isom",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/malantonio/daylight/issues"
+    "url": "https://github.com/kevnz/daylight/issues"
   },
-  "homepage": "https://github.com/malantonio/daylight"
+  "homepage": "https://github.com/kevnz/daylight"
 }

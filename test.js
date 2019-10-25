@@ -20,7 +20,7 @@ test('date format: YYYY/MM/DDTHH:MM:SS (UTC timezone)', function(t) {
 test('escaping escapes', function(t) {
     t.equal(formatDate('\\M', date), 'M');
     t.equal(formatDate('\\d\\a\\y: l', date), 'day: Wednesday');
-    
+
     t.end();
 });
 

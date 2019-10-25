@@ -1,9 +1,5 @@
 # daylight
 
-[![Build Status](https://travis-ci.org/malantonio/daylight.svg)](https://travis-ci.org/malantonio/daylight)
-
-I absolutely love the [moment.js](http://momentjs.com) library, but at times it runs a bit heavier than I really need. I like the simplicity of PHP's built-in `date()` function and wrote this to be sort of similar.
-
 ## usage
 
 note: **daylight** does a rather rudimentary job parsing dates (strings are just passed through [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)), so beware of local timezone vs utc time-string pitfalls.
