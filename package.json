@@ -1,6 +1,6 @@
 {
   "name": "@kev_nz/daylight",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "lightweight javascript date formatting",
   "main": "daylight.js",
   "dependencies": {},
