@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "@kev_nz/eslint-config": "^5.1.0",
+    "@kev_nz/publisher": "^4.0.1",
     "eslint": "^6.7.2",
     "tape": "~4.11.0"
   },
