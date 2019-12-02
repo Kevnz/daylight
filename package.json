@@ -13,7 +13,7 @@
   "scripts": {
     "test": "node test.js",
     "postversion": "npm publish --access=public",
-    "postpublish": "git push origin --all --follow-tags"
+    "postpublish": "git push origin --all --follow-tags && npx publisher"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/kevnz/daylight/issues"
   },
-  "homepage": "https://github.com/kevnz/daylight"
+  "homepage": "https://kevinisom.info/daylight"
 }
