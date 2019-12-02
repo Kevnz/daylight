@@ -5,6 +5,8 @@
   "main": "daylight.js",
   "dependencies": {},
   "devDependencies": {
+    "@kev_nz/eslint-config": "^5.1.0",
+    "eslint": "^6.7.2",
     "tape": "~4.11.0"
   },
   "scripts": {
