@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>@kev_nz/daylight - Date parser for JavsScript - Kevin Isom</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="extend.css" />
+  <meta name="description" content="lightweight javascript date formatting" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/github.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="@kev_nz/daylight - Date parser for JavsScript - Kevin Isom" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Useful utility function to parse dates into readable strings" />
+  <meta property="og:url" content="https://kevinisom.info/daylight" />
+  <meta property="og:image" content="https://kevinisom.info/daylight/daylight-demo.png" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@kev_nz" />
+  <meta name="twitter:title" content="@kev_nz/daylight - Date parser for JavsScript - Kevin Isom" />
+  <meta name="twitter:description" content="Useful utility function to parse dates into readable strings" />
+  <meta name="twitter:image" content="https://kevinisom.info/daylight/daylight-demo.png" />
+
+</head>
+
+<body>
+  <div class="container">
+  <h1 id="daylight">daylight</h1>
+<h2 id="usage">usage</h2>
+<p>note: <strong>daylight</strong> does a rather rudimentary job parsing dates (strings are just passed through <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><code>Date.parse()</code></a>), so beware of local timezone vs utc time-string pitfalls.</p>
+<h3 id="in-the-browser">in the browser</h3>
+<p><strong>TODO</strong>: requirejs, commonjs, etc. module support</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"daylight.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> today = daylight(<span class="hljs-string">'l, F jS'</span>, <span class="hljs-built_in">Date</span>.now());
+    <span class="hljs-keyword">var</span> p = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'p'</span>);
+    p.innerText = today;
+    <span class="hljs-built_in">document</span>.body.appendChild(p);
+
+    <span class="hljs-comment">//=&gt; &lt;p&gt;Wednesday, May 28th&lt;/p&gt;</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h3 id="using-node">using node</h3>
+<p>install with <code>npm install daylight</code>, run tests with <code>npm test</code>, etc.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">var</span> daylight = <span class="hljs-built_in">require</span>(<span class="hljs-string">'daylight'</span>);
+<span class="hljs-built_in">console</span>.log(daylight(<span class="hljs-string">'l, F jS'</span>, <span class="hljs-built_in">Date</span>.now()));
+
+<span class="hljs-comment">//=&gt; Wednesday, May 28th</span></code></pre>
+<h2 id="format-strings">format strings</h2>
+<p>these are copied from <a href="http://php.net/manual/en/function.date.php">php's <code>date()</code> function</a></p>
+<p>characters not on this list are passed normally; to escape characters you'll have to use double backslashes:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">var</span> today = daylight(<span class="hljs-string">'\\d\\a\\y: l'</span>, <span class="hljs-built_in">Date</span>.now());
+<span class="hljs-built_in">console</span>.log(today);
+<span class="hljs-comment">//=&gt; day: Wednesday</span></code></pre>
+<table>
+<tr>
+    <th>string</th>
+    <th>format</th>
+    <th>example</th>
+</tr>
+<tr>
+    <td><em>d</em></td>
+    <td>day of month, with leading zero</td>
+    <td>01 to 31</td>
+</tr>
+<tr>
+    <td><em>D</em></td>
+    <td>day of week, three letter abbreviation</td>
+    <td>Sun to Sat</td>
+</tr>
+<tr>
+    <td><em>j</em></td>
+    <td>day of month, without leading zero</td>
+    <td>1 to 31</td>
+</tr>
+<tr>
+    <td><em>l (lower-case L)</em></td>
+    <td>day of week, full word</td>
+    <td>Sunday to Saturday</td>
+</tr>
+<tr>
+    <td><em>N</em></td>
+    <td>numeric day of the week</td>
+    <td>1 to 7</td>
+</tr>
+<tr>
+    <td><em>S</em></td>
+    <td>English suffix</td>
+    <td>st, nd, rd, th</td>
+</tr>
+<tr>
+    <td><em>w</em></td>
+    <td>zero-based day of the week</td>
+    <td>0 (Sunday) to 6</td>
+</tr>
+<tr>
+    <td><em>z</em></td>
+    <td>numeric day of the year</td>
+    <td>1-366</td>
+</tr>
+<tr>
+    <td><em>F</em></td>
+    <td>month, full word</td>
+    <td>January to December</td>
+</tr>
+<tr>
+    <td><em>m</em></td>
+    <td>month with leading zero</td>
+    <td>1 to 12</td>
+</tr>
+<tr>
+    <td><em>M</em></td>
+    <td>month, three letter abbreviation</td>
+    <td>Jan to Dec</td>
+</tr>
+<tr>
+    <td><em>n</em></td>
+    <td>month without leading zero</td>
+    <td>1 to 12</td>
+</tr>
+<tr>
+    <td><em>Y</em></td>
+    <td>four-digit year</td>
+    <td>1989 or 2014</td>
+</tr>
+<tr>
+    <td><em>y</em></td>
+    <td>two-digit year</td>
+    <td>89 or 14</td>
+</tr>
+<tr>
+    <td><em>a</em></td>
+    <td>lowercase ante or post meridiem</td>
+    <td>am or pm</td>
+</tr>
+<tr>
+    <td><em>A</em></td>
+    <td>uppercase ante or post meridiem</td>
+    <td>AM or PM</td>
+</tr>
+<tr>
+    <td><em>g</em></td>
+    <td>12-hour format, no leading zero</td>
+    <td>1 to 12</td>
+</tr>
+<tr>
+    <td><em>G</em></td>
+    <td>24-hour format, no leading zero</td>
+    <td>0 to 23</td>
+</tr>
+<tr>
+    <td><em>h</em></td>
+    <td>12-hour format, leading zero</td>
+    <td>01 to 12</td>
+</tr>
+<tr>
+    <td><em>H</em></td>
+    <td>24-hour format, leading zero</td>
+    <td>00 to 23</td>
+</tr>
+<tr>
+    <td><em>i</em></td>
+    <td>minutes, with leading zero</td>
+    <td>00 to 59</td>
+</tr>
+<tr>
+    <td><em>s</em></td>
+    <td>seconds, with leading zero</td>
+    <td>00 to 59</td>
+</tr>
+</table>
+  </div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64038939-2');
+</script>
+
+</body>
