@@ -21,7 +21,7 @@ note: **daylight** does a rather rudimentary job parsing dates (strings are just
 
 ### using node
 
-install with `npm install daylight`, run tests with `npm test`, etc.
+install with `npm install @kev_nz/daylight`, run tests with `npm test`, etc.
 
 ```javascript
 var daylight = require('daylight');
