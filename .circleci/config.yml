@@ -8,6 +8,9 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/daylight/reports
   "node-12":
     docker:
       - image: circleci/node:12
@@ -27,6 +30,9 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/daylight/reports
   "node-8":
     docker:
       - image: circleci/node:8
@@ -35,6 +41,9 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/daylight/reports
 
 workflows:
   version: 2
