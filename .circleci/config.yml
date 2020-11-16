@@ -1,8 +1,19 @@
 version: 2
 jobs:
+  "node-14":
+    docker:
+      - image: circleci/node:14
+    working_directory: ~/daylight
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/daylight/reports
   "node-13":
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:13
     working_directory: ~/daylight
     steps:
       - checkout
@@ -56,9 +67,10 @@ workflows:
               only:
                 - "master"
     jobs:
-      - "deployed"
+      - "node-14"
   build:
     jobs:
+      - "node-14"
       - "node-13"
       - "node-12"
       - "node-10"
